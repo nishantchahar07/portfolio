@@ -1,10 +1,35 @@
 "use client"
-import React from "react"
+import React, { useState } from "react"
 import { Mail } from "lucide-react"
 import { assets } from "@/assets/assets"
 import Image from "next/image"
 
 const Contact = () => {
+
+    const [result, setResult] = useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "7a50ef2c-4dbf-412f-96aa-85ad4ed41f59");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
   return (
     <section
       id="contact"
