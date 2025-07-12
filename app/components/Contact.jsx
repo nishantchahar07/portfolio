@@ -35,7 +35,7 @@ const Contact = () => {
       className="w-full px-6 md:px-[12%] py-20 bg-gradient-to-br from-white via-indigo-50 to-indigo-100 scroll-mt-20"
     >
       <div className="max-w-3xl mx-auto rounded-3xl shadow-2xl bg-white/80 backdrop-blur-xl p-10 border border-indigo-100 transition hover:shadow-indigo-200 animate__animated animate__fadeInUp">
-        {/* HEADINGS */}
+       
         <h4 className="text-center mb-2 text-sm font-semibold text-indigo-500 tracking-widest uppercase animate__animated animate__fadeInDown">
           Contact With Me
         </h4>
@@ -47,7 +47,6 @@ const Contact = () => {
           a project, or just want to say hi, drop a message and I’ll get back to you soon.
         </p>
 
-        {/* FORM */}
         <form onSubmit={onSubmit} className="space-y-6 animate__animated animate__fadeInUp animate__delay-3s">
           <div className="flex flex-col md:flex-row gap-6">
             <input
@@ -90,7 +89,7 @@ const Contact = () => {
 
         
       <div className="mt-10 flex justify-center gap-6 animate__animated animate__fadeInUp animate__delay-4s">
-  {/* Gmail */}
+  
   <a
     href="mailto:nishantchahar20@gmail.com"
     className="transition transform hover:scale-125 duration-300"

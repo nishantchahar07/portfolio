@@ -6,7 +6,7 @@ const Services = () => {
       id="services"
       className="w-full px-[12%] py-16 scroll-mt-20 bg-gradient-to-br from-[#f8fafc] to-[#e0e7ff] relative overflow-hidden"
     >
-     
+
       <div className="absolute top-[-80px] left-[-80px] w-72 h-72 bg-purple-300 opacity-30 rounded-full blur-3xl animate-pulse z-0"></div>
       <div className="absolute bottom-[-80px] right-[-80px] w-72 h-72 bg-indigo-200 opacity-30 rounded-full blur-3xl animate-pulse z-0"></div>
 
@@ -73,7 +73,7 @@ const Services = () => {
           </div>
         ))}
       </div>
-      {/* Animations */}
+
       <style jsx>{`
         @keyframes fade-in-down {
           0% {
@@ -103,6 +103,7 @@ const Services = () => {
         }
       `}</style>
     </div>
+    
   )
 }
 
