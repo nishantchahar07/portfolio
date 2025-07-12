@@ -1,10 +1,20 @@
 
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Navbar = () => {
-const [menuOpen, setMenuOpen] = React.useState(false);
+const [menuOpen, setMenuOpen] = useState(false);
+
+const [isDark, setIsDark] = useState(false);
+
+useEffect(() => {
+    if (isDark) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+}, [isDark]);
 
 return (
     <nav className="w-full flex justify-between items-center py-4 px-6 lg:px-12 xl:px-[10%] fixed top-0 z-50 bg-gradient-to-r from-white/70 via-white/20 to-blue-100/60 backdrop-blur-lg shadow-lg transition-all duration-400">
@@ -12,7 +22,7 @@ return (
             <Image
                 src={assets.logo}
                 alt="logo"
-                className="cursor-pointer mr-10 w-32 group-hover:scale-110 transition-transform duration-300 drop-shadow-lg"
+                className="cursor-pointer mr-10 w-15 group-hover:scale-110 transition-transform duration-300 drop-shadow-lg"
                 priority
             />
         </a>
@@ -37,8 +47,13 @@ return (
             <button
                 className="p-2 rounded-full bg-white/80 hover:bg-blue-100 transition-colors duration-200 shadow"
                 aria-label="Toggle theme"
+                onClick={() => setIsDark(!isDark)}
             >
-                <Image src={assets.moon_icon} alt="Toggle theme" className="w-6" />
+                <Image
+                    src={isDark ? assets.sun_icon : assets.moon_icon}
+                    alt="Toggle theme"
+                    className="w-6"
+                />
             </button>
             <a
                 href="#contact"
