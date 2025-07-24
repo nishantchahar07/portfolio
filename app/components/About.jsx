@@ -45,7 +45,7 @@ const About = () => {
                   I’ve contributed to several client-based projects, sharpening my problem-solving and teamwork skills in real-world environments.
                 </p>
                 <p className="text-gray-700 text-base leading-7 animate-fade-in" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
-                  My own projects include  <span className="font-semibold text-purple-700">Codeshala</span>, <span className="font-semibold text-purple-700">Dhatri</span>, and <span className="font-semibold text-purple-700">BaatChat</span> <span className="font-semibold text-purple-700">Sublite</span> <span className="font-semibold text-purple-700">Auth_Junction</span>.
+                  My own projects include  <span className="font-semibold text-purple-700">Codeshala</span>, <span className="font-semibold text-purple-700">Dhatri</span>,  <span className="font-semibold text-purple-700">BaatChat</span> , <span className="font-semibold text-purple-700">Sublite</span> , and <span className="font-semibold text-purple-700">Auth_Junction</span>.
                 </p>
                 <p className="text-gray-700 text-base leading-7 animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
                   Currently, I'm building <span className="font-semibold text-blue-700">Revoluxx</span> and collaborating with startups to craft meaningful digital products.
