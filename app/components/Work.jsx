@@ -1,9 +1,15 @@
+'use client'
+
 import { assets, workData } from '@/assets/assets'
 import Image from 'next/image'
 import React from 'react'
 
 const Work = () => {
     const [activeIndex, setActiveIndex] = React.useState(null);
+    const [showAll, setShowAll] = React.useState(false);
+
+    const VISIBLE_COUNT = 3;
+    const displayedProjects = showAll ? workData : workData.slice(0, VISIBLE_COUNT);
 
     return (
         <section
@@ -21,7 +27,7 @@ const Work = () => {
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 animate-fade-in-up delay-300">
-                {workData.map((project, index) => (
+                {displayedProjects.map((project, index) => (
                     <div
                         key={index}
                         className="group relative rounded-3xl shadow-xl overflow-hidden bg-white hover:scale-105 transition-transform duration-300"
@@ -39,19 +45,20 @@ const Work = () => {
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`inline-flex items-center px-4 py-2 rounded-full font-semibold shadow-lg transition-colors duration-300 ${
-                                        activeIndex === index
-                                            ? 'bg-indigo-800 text-white'
-                                            : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                                    className={`inline-flex items-center px-5 py-2.5 rounded-full font-semibold shadow-lg transition-all duration-300 border-2 border-transparent bg-gradient-to-r from-slate-900 to-gray-800 text-white hover:from-slate-800 hover:to-gray-700 hover:border-indigo-400 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-indigo-200 ${
+                                        activeIndex === index ? 'scale-105 ring-2 ring-indigo-300' : ''
                                     }`}
                                     onClick={() => setActiveIndex(index)}
+                                    style={{ boxShadow: '0 4px 20px 0 rgba(99,102,241,0.15)' }}
                                 >
-                                    View Project
-                                    <Image
-                                        src={assets.send_icon}
-                                        alt="Open"
-                                        className="ml-2 w-5 h-5 animate-bounce"
-                                    />
+                                    <span className="mr-2">View Project</span>
+                                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors duration-300">
+                                        <Image
+                                            src={assets.send_icon}
+                                            alt="Open"
+                                            className="w-5 h-5 animate-bounce"
+                                        />
+                                    </span>
                                 </a>
                             </div>
                         </div>
@@ -70,10 +77,28 @@ const Work = () => {
                 ))}
             </div>
 
-            <a href="" className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-600 px-10 py-3 rounded-full my-20 mx-auto hover:bg-gray-200 transition-colors duration-500">
-                show more
-                <Image src={assets.right_arrow_bold} alt="Right arrow" className="w-5 h-5" />
-            </a>
+            {workData.length > VISIBLE_COUNT && (
+                <div className="flex justify-center mt-16">
+                    <button
+                        type="button"
+                        onClick={() => setShowAll((prev) => !prev)}
+                        className="relative inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-slate-900 to-gray-800 text-white font-semibold text-base shadow-lg border-2 border-transparent hover:from-slate-800 hover:to-gray-700 hover:border-indigo-400 hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-200 group"
+                        style={{ boxShadow: '0 3px 16px 0 rgba(99,102,241,0.15)' }}
+                    >
+                        <span className="transition-all duration-200 group-hover:scale-105">
+                            {showAll ? 'Show Less' : 'Show More'}
+                        </span>
+                        <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors duration-300">
+                            <Image
+                                src={showAll ? (assets.up_arrow_bold || assets.right_arrow_bold) : assets.right_arrow_bold}
+                                alt={showAll ? "Up arrow" : "Right arrow"}
+                                className="w-4 h-4"
+                            />
+                        </span>
+                        <span className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none" />
+                    </button>
+                </div>
+            )}
         </section>
     )
 }

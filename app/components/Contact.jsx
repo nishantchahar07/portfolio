@@ -74,7 +74,7 @@ const Contact = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="px-10 py-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-pink-500 hover:to-indigo-500 text-white font-semibold rounded-full shadow-xl transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-400 flex items-center gap-2"
+              className="px-6 py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-pink-500 hover:to-indigo-500 text-white font-semibold rounded-full shadow-xl transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-400 flex items-center gap-2"
             >
               <span className="animate__animated animate__pulse animate__infinite">Send Message</span>
               <Image src={assets.right_arrow_white} alt="Right arrow" width={24} height={24} />

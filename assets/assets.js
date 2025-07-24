@@ -85,7 +85,7 @@ export const workData = [
     {
         title: 'Dhatri',
         description: 'AI Nurse Recommendation System',
-        bgImage: require('./Dhatri.jpg'),
+        bgImage: require('./Dhatri.png'),
         link : 'https://github.com/nishantchahar07/Dhatri.git'
     },
     {
