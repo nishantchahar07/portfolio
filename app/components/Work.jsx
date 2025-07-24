@@ -3,6 +3,8 @@ import Image from 'next/image'
 import React from 'react'
 
 const Work = () => {
+    const [activeIndex, setActiveIndex] = React.useState(null);
+
     return (
         <section
             id="work"
@@ -17,6 +19,7 @@ const Work = () => {
             <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo text-gray-600 animate-fade-in-up delay-200">
                 Welcome to my portfolio! Here, you can explore a selection of my recent projects that showcase my skills in web development. Each project reflects my commitment to quality and innovation. Feel free to reach out if you have any questions or would like to collaborate!
             </p>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 animate-fade-in-up delay-300">
                 {workData.map((project, index) => (
                     <div
@@ -36,7 +39,12 @@ const Work = () => {
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-full font-semibold shadow-lg hover:bg-indigo-700 transition-colors duration-300"
+                                    className={`inline-flex items-center px-4 py-2 rounded-full font-semibold shadow-lg transition-colors duration-300 ${
+                                        activeIndex === index
+                                            ? 'bg-indigo-800 text-white'
+                                            : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                                    }`}
+                                    onClick={() => setActiveIndex(index)}
                                 >
                                     View Project
                                     <Image
@@ -47,26 +55,24 @@ const Work = () => {
                                 </a>
                             </div>
                         </div>
-                        {project.image && (
+                        {project.bgImage && (
                             <div className="absolute right-4 bottom-4 w-24 h-24 opacity-80 group-hover:scale-110 transition-transform duration-300">
                                 <Image
-                                    src={project.image}
+                                    src={project.bgImage}
                                     alt={project.title}
                                     fill
                                     className="object-contain rounded-xl shadow-lg"
                                 />
                             </div>
-                           
                         )}
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
                     </div>
-
-                
                 ))}
             </div>
 
-            <a href='' className='w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-600 px-10 py-3 rounded-full my-20 mx-auto hover:bg-gray-200 transition-colors duration-500'>
-                    show more <Image src={assets.right_arrow_bold} alt="Right arrow" className='w-5 h-5 ' />
+            <a href="" className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-600 px-10 py-3 rounded-full my-20 mx-auto hover:bg-gray-200 transition-colors duration-500">
+                show more
+                <Image src={assets.right_arrow_bold} alt="Right arrow" className="w-5 h-5" />
             </a>
         </section>
     )
