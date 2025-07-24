@@ -15,6 +15,8 @@ const Header = () => {
           <Image
             src={assets.profile_img}
             alt="Profile"
+            width={144}
+            height={144}
             className="rounded-full w-36 h-36 border-4 border-gradient-to-tr from-pink-500 via-purple-500 to-indigo-500 shadow-2xl object-cover"
             priority
           />
@@ -22,7 +24,7 @@ const Header = () => {
 
         <h3 className="flex items-end gap-2 text-2xl md:text-3xl mb-2 font-Ovo bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent animate-gradient-x font-semibold">
           Hi! I'm Nishant Chahar
-          <Image src={assets.hand_icon} alt="Waving hand" className="w-7 animate-wave" />
+          <Image src={assets.hand_icon} alt="Waving hand" width={28} height={28} className="w-7 animate-wave" />
         </h3>
 
         <h1 className="text-4xl sm:text-6xl lg:text-[66px] font-Ovo font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x drop-shadow-lg">
@@ -39,7 +41,7 @@ const Header = () => {
             className="px-8 py-3 border-none rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white font-semibold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform duration-200"
           >
             Contact Me
-            <Image src={assets.right_arrow_white} alt="Arrow" className="w-4" />
+            <Image src={assets.right_arrow_white} alt="Arrow" width={16} height={16} className="w-4" />
           </a>
           <a
             href="/nishant-resume.pdf"
@@ -47,7 +49,7 @@ const Header = () => {
             className="px-8 py-3 border rounded-full border-gray-300 bg-white text-gray-800 font-semibold flex items-center gap-2 shadow hover:bg-gray-50 hover:scale-105 transition-transform duration-200"
           >
             My CV
-            <Image src={assets.download_icon} alt="Download" className="w-5" />
+            <Image src={assets.download_icon} alt="Download" width={20} height={20} className="w-5" />
           </a>
         </div>
       </div>
