@@ -44,17 +44,7 @@ return (
             </li>
         </ul>
         <div className="flex items-center gap-4">
-            <button
-                className="p-2 rounded-full bg-white/80 hover:bg-blue-100 transition-colors duration-200 shadow"
-                aria-label="Toggle theme"
-                onClick={() => setIsDark(!isDark)}
-            >
-                <Image
-                    src={isDark ? assets.sun_icon : assets.moon_icon}
-                    alt="Toggle theme"
-                    className="w-6"
-                />
-            </button>
+           
             <a
                 href="#contact"
                 className="flex items-center gap-2 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 text-white px-7 py-2 rounded-xl shadow-lg hover:from-blue-600 hover:to-blue-400 transition-all duration-300 font-semibold"
