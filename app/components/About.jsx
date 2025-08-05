@@ -17,8 +17,7 @@ const About = () => {
         </h2>
 
         <div className="flex w-full flex-col lg:flex-row items-center gap-16 lg:gap-24 my-12">
-       
-          <div className="relative group w-64 sm:w-80 rounded-3xl shadow-2xl overflow-hidden transition-transform duration-300 hover:scale-105 animate-slide-in-left">
+          <div className="relative group w-64 sm:w-80 rounded-3xl shadow-2xl overflow-hidden transition-transform duration-300 hover:scale-105 animate-slide-in-left flex flex-col items-center">
             <Image
               src={assets.user_image}
               alt="user image"
@@ -28,7 +27,6 @@ const About = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-purple-700/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl" />
           </div>
 
-        
           <div className="flex-1 animate-slide-in-right">
             <div className="bg-white/90 rounded-3xl shadow-2xl p-10 backdrop-blur-md border border-purple-200 transition-transform duration-300 hover:scale-[1.02]">
               <div className="space-y-4">
@@ -78,6 +76,23 @@ const About = () => {
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Portfolio Video Section - Footer */}
+        <div className="max-w-2xl mx-auto mt-16 mb-2 w-full animate-fade-in" style={{ animationDelay: '1.2s', animationFillMode: 'both' }}>
+          <div className="bg-white/90 rounded-3xl shadow-2xl p-6 border border-purple-200 flex flex-col items-center">
+            <h3 className="text-2xl font-bold text-purple-800 mb-4 text-center">Portfolio Overview</h3>
+            <video
+              className="rounded-2xl w-full h-64 object-cover shadow-lg border border-purple-200"
+              controls
+              poster="/portfolio-video-poster.jpg"
+              style={{ background: "#f3e8ff" }}
+            >
+              <source src="/portfolio-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p className="text-center text-sm text-gray-600 mt-3">Watch my portfolio video for a quick overview of my work and skills.</p>
           </div>
         </div>
       </div>
