@@ -76,6 +76,16 @@ export const assets = {
 };
 
 export const workData = [
+
+
+     {
+        title: 'Sublite',
+        description: ' Premium Subscription rental platform',
+        bgImage: require('./Sublite.png'),
+        link : 'https://sublite.vercel.app/'
+    },
+
+
     {
         title: 'BaatChat',
         description: ' Real Conversations, Real Connections',
