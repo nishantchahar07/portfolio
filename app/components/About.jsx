@@ -31,7 +31,7 @@ const About = () => {
             <div className="bg-white/90 rounded-3xl shadow-2xl p-10 backdrop-blur-md border border-purple-200 transition-transform duration-300 hover:scale-[1.02]">
               <div className="space-y-4">
                 <p className="text-gray-800 text-lg leading-8 font-semibold mb-2 animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-                  Hey! I'm <span className="font-bold text-purple-700">Nishant Chahar</span> — a Full Stack Developer & founder of <span className="font-semibold text-blue-700">Revoluxx</span>.
+                  Hey! I'm <span className="font-bold text-purple-700">Nishant Chahar</span> — a Full Stack Developer & founder of <span className="font-semibold text-blue-700">DEXTER</span>.
                 </p>
                 <p className="text-gray-700 text-base leading-7 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
                   I specialize in building beautiful, fast, and scalable web apps using <span className="font-semibold text-blue-600">Java</span>, <span className="font-semibold text-blue-600">Python</span>, <span className="font-semibold text-blue-600">React</span>, <span className="font-semibold text-blue-600">Next.js</span>, <span className="font-semibold text-blue-600">Tailwind</span>, <span className="font-semibold text-blue-600">Prisma</span>, <span className="font-semibold text-blue-600">PostgreSQL</span>, and <span className="font-semibold text-blue-600">TypeScript</span>.
@@ -42,11 +42,14 @@ const About = () => {
                 <p className="text-gray-700 text-base leading-7 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
                   I’ve contributed to several client-based projects, sharpening my problem-solving and teamwork skills in real-world environments.
                 </p>
+                <p className="text-gray-700 text-base leading-7 animate-fade-in" style={{ animationDelay: '0.45s', animationFillMode: 'both' }}>
+                  My freelancing journey has been incredibly rewarding, especially while working on projects like <span className="font-semibold text-blue-700">Book My Appointment</span> and <span className="font-semibold text-blue-700">FLM</span>. I focused on making their user interfaces pixel-perfect, ensuring a seamless and visually appealing experience for every user.
+                </p>
                 <p className="text-gray-700 text-base leading-7 animate-fade-in" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
                   My own projects include  <span className="font-semibold text-purple-700">Codeshala</span>, <span className="font-semibold text-purple-700">Dhatri</span>,  <span className="font-semibold text-purple-700">BaatChat</span> , <span className="font-semibold text-purple-700">Sublite</span> , and <span className="font-semibold text-purple-700">Auth_Junction</span>.
                 </p>
                 <p className="text-gray-700 text-base leading-7 animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
-                  Currently, I'm building <span className="font-semibold text-blue-700">Revoluxx</span> and collaborating with startups to craft meaningful digital products.
+                  Currently, I'm building <span className="font-semibold text-blue-700">DEXTER</span> and collaborating with startups to craft meaningful digital products.
                 </p>
                 <p className="text-gray-700 text-base leading-7 animate-fade-in" style={{ animationDelay: '0.7s', animationFillMode: 'both' }}>
                   Whether it's client work or experimenting with new tech, I aim to deliver elegant, efficient, and user-first solutions.
