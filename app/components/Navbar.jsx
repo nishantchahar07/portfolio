@@ -1,76 +1,113 @@
-import { assets } from '@/assets/assets'
-import Image from 'next/image'
-import React, { useState } from 'react'
+'use client';
+import { useState, useEffect } from 'react';
+import { Menu, X, Code2 } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
-    const [menuOpen, setMenuOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
 
-    return (
-        <nav className="w-full flex justify-between items-center py-4 px-6 lg:px-12 xl:px-[10%] fixed top-0 z-50 bg-gradient-to-r from-white/70 via-white/20 to-blue-100/60 backdrop-blur-lg shadow-lg transition-all duration-400">
-            <a href="#top" className="flex items-center group">
-                <Image
-                    src={assets.logo}
-                    alt="logo"
-                    className="cursor-pointer mr-10 w-15 group-hover:scale-110 transition-transform duration-300 drop-shadow-lg"
-                    priority
-                />
-            </a>
+  const navItems = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
-            <ul className="hidden md:flex items-center gap-8 lg:gap-12 rounded-full px-14 py-3 bg-white/80 shadow-md backdrop-blur-xl border border-blue-100">
-                <li><a href="#top" className="font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200">Home</a></li>
-                <li><a href="#about" className="font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200">About</a></li>
-                <li><a href="#services" className="font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200">Services</a></li>
-                <li><a href="#work" className="font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200">Work</a></li>
-                <li><a href="#contact" className="font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200">Contact</a></li>
-            </ul>
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+      
+      const sections = navItems.map(item => item.href.substring(1));
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
+    };
 
-            <div className="flex items-center gap-4">
-                <a
-                    href="#contact"
-                    className="flex items-center gap-2 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 text-white px-7 py-2 rounded-xl shadow-lg hover:from-blue-600 hover:to-blue-400 transition-all duration-300 font-semibold"
-                >
-                    <Image src={assets.arrow_icon} alt="Contact" className="w-4" />
-                    Contact
-                </a>
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-                <button
-                    className="block md:hidden ml-3 p-2 rounded-full bg-white/80 hover:bg-blue-100 transition-colors duration-200 shadow"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    aria-label="Open menu"
-                >
-                    <Image src={assets.menu_black} alt="menu-button" className="w-6" />
-                </button>
-            </div>
+  return (
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      scrolled ? 'glass-dark py-4' : 'py-6'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Code2 className="w-8 h-8 gradient-text" />
+            <span className="text-xl font-bold gradient-text font-poppins">DevPortfolio</span>
+          </div>
 
-            {/* Mobile menu */}
-            <ul
-                className={`flex md:hidden flex-col gap-6 py-20 px-10 fixed top-0 bottom-0 right-0 w-64 h-screen bg-gradient-to-b from-blue-50 via-white to-blue-100 shadow-2xl z-50 transition-transform duration-500 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
+                  activeSection === item.href.substring(1)
+                    ? 'text-blue-400'
+                    : 'text-gray-300 dark:text-gray-300'
+                }`}
+              >
+                {item.name}
+                {activeSection === item.href.substring(1) && (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full" />
+                )}
+              </a>
+            ))}
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
+            
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden glass rounded-lg p-2 hover:scale-110 transition-all duration-300"
             >
-                <button
-                    className="absolute top-6 right-6 p-2 rounded-full bg-white/80 hover:bg-blue-100 transition-colors duration-200 shadow"
-                    onClick={() => setMenuOpen(false)}
-                    aria-label="Close menu"
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden mt-4 glass rounded-2xl p-6 animate-fade-in">
+            <div className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`px-3 py-2 text-base font-medium transition-all duration-300 hover:text-blue-400 ${
+                    activeSection === item.href.substring(1)
+                      ? 'text-blue-400'
+                      : 'text-gray-300'
+                  }`}
                 >
-                    <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M6 6l12 12M6 18L18 6" />
-                    </svg>
-                </button>
-                <li><a href="#top" onClick={() => setMenuOpen(false)} className="font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200">Home</a></li>
-                <li><a href="#about" onClick={() => setMenuOpen(false)} className="font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200">About</a></li>
-                <li><a href="#services" onClick={() => setMenuOpen(false)} className="font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200">Services</a></li>
-                <li><a href="#work" onClick={() => setMenuOpen(false)} className="font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200">Work</a></li>
-                <li><a href="#contact" onClick={() => setMenuOpen(false)} className="font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200">Contact</a></li>
-            </ul>
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+};
 
-            {/* Overlay for mobile menu */}
-            {menuOpen && (
-                <div
-                    className="fixed inset-0 bg-black/30 z-40 md:hidden"
-                    onClick={() => setMenuOpen(false)}
-                />
-            )}
-        </nav>
-    )
-}
-
-export default Navbar
+export default Navbar;
