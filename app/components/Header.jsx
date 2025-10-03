@@ -3,6 +3,15 @@ import Image from 'next/image'
 import React from 'react'
 
 const Header = () => {
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/nishant-resume.pdf';
+    link.download = 'Nishant_Chahar_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="min-h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-pink-50 flex items-center justify-center px-4 py-10 overflow-hidden relative">
     
@@ -45,7 +54,7 @@ const Header = () => {
           </a>
           <a
             href="/nishant-resume.pdf"
-            download
+            onClick={(e) => { e.preventDefault(); handleDownload(); }}
             className="px-8 py-3 border rounded-full border-gray-300 bg-white text-gray-800 font-semibold flex items-center gap-2 shadow hover:bg-gray-50 hover:scale-105 transition-transform duration-200"
           >
             My CV
